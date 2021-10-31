@@ -11,19 +11,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "NHOMCO")
+@Table(name = "DUNGCU")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class NhomCo {
+public class DungCu {
     @Id
-    @Column(name = "MaNhomCo", nullable = false)
-    private String maNhomCo;
+    @Column(name = "MaDungCu", nullable = false)
+    private String maDungCu;
 
-    @Column(name = "TenNhomCo",nullable = false)
-    private String tenNhomCo;
+    @Column(name = "TenDungCu",nullable = false)
+    private String tenDungCu;
 
     @Column(name = "HinhMinhHoa",nullable = false)
     private String hinhMinhHoa;
+
+    @Column(name = "KhoiLuong")
+    private float khoiLuong;
+
+    @Column(name = "MoTa")
+    private String moTa;
+
+    @Column(name = "GhiChu")
+    private String ghiChu;
 }
