@@ -7,12 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Table(name = "KHOATAP")
 @Getter
 @Setter
@@ -38,12 +36,16 @@ public class KhoaTap {
     @Column(name = "TrangThai",nullable = false)
     private int trangThai;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="MaNhanVien",nullable = false)
     private NhanVien nhanVien;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="MaHLV",nullable = false)
     private HuanLuyenVien huanLuyenVien;
 
-//    @JsonIgnore
-//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-//    @OneToMany(mappedBy = "khoaTap")
-//    List<GiaKhoaTap> giaKhoaTapList;
+    @JsonIgnore
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(mappedBy = "khoaTap")
+    List<GiaKhoaTap> giaKhoaTapList;
 }

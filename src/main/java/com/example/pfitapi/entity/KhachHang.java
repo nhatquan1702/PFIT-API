@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
 @Table(name = "KHACHHANG")
 @Getter
 @Setter
@@ -45,7 +46,7 @@ public class KhachHang {
     @Column(name = "TrangThai",nullable = false)
     private int trangThai;
 
-//    @OneToOne(mappedBy = "MaHocVien", cascade = CascadeType.ALL)
-//    @PrimaryKeyJoinColumn
-//    private HocVien hocVien;
+    @OneToOne(mappedBy = "khachHang", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private HocVien hocVien;
 }

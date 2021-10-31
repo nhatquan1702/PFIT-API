@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "GIAKHOATAP")
 @Getter
 @Setter
@@ -26,6 +27,6 @@ public class GiaKhoaTap {
     @JoinColumn(name = "MaHoaDon")
     HoaDon hoaDon;
 
-    @Column(name = "TrangThai",nullable = false)
-    private Integer trangThai;
+    @Column(name = "SoLuongThang",nullable = false)
+    private Integer soLuongThang;
 }

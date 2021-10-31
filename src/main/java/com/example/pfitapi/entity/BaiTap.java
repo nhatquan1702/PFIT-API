@@ -10,6 +10,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Table(name = "BAITAP")
 @Getter
 @Setter
@@ -38,20 +39,20 @@ public class BaiTap {
     @Column(name = "NgayTap",nullable = false)
     private int ngayTap;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name ="MaKhoaTap",nullable = false)
-//    private KhoaTap khoaTap;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name ="MaNhomCo",nullable = false)
-//    private NhomCo nhomCo;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name ="MaDungCu",nullable = false)
-//    private DungCu dungCu;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="MaKhoaTap",nullable = false)
+    private KhoaTap khoaTap;
 
-//    @JsonIgnore
-//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-//    @OneToMany(mappedBy = "baiTap")
-//    List<ChiTietBaiTap> chiTietBaiTapList;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="MaNhomCo",nullable = false)
+    private NhomCo nhomCo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="MaDungCu",nullable = false)
+    private DungCu dungCu;
+
+    @JsonIgnore
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(mappedBy = "baiTap")
+    List<ChiTietBaiTap> chiTietBaiTapList;
 }

@@ -37,17 +37,17 @@ public class HocVien {
     @Column(name = "GhiChu")
     private String ghiChu;
 
-//    @OneToOne
-//    @MapsId
-//    @JoinColumn(name = "TaiKhoan")
-//    private KhachHang khachHang;
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "TaiKhoan")
+    private KhachHang khachHang;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name ="MaKhoaTap",nullable = false)
-//    private KhoaTap khoaTap;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="MaKhoaTap",nullable = false)
+    private KhoaTap khoaTap;
 
-//    @JsonIgnore
-//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-//    @OneToMany(mappedBy = "hocVien")
-//    List<ChiTietBaiTap> chiTietBaiTapList;
+    @JsonIgnore
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(mappedBy = "hocVien")
+    List<ChiTietBaiTap> chiTietBaiTapList;
 }

@@ -40,12 +40,12 @@ public class HoaDon {
     @Column(name = "TrangThai",nullable = false)
     private String trangThai;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name ="MaHocVien",nullable = false)
-//    private HocVien hocVien;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="MaHocVien",nullable = false)
+    private HocVien hocVien;
 
-//    @JsonIgnore
-//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-//    @OneToMany(mappedBy = "hoaDon")
-//    List<GiaKhoaTap> giaKhoaTapList;
+    @JsonIgnore
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(mappedBy = "hoaDon")
+    List<GiaKhoaTap> giaKhoaTapList;
 }
