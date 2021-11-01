@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "KHACHHANG")
@@ -16,8 +17,8 @@ import java.sql.Date;
 @NoArgsConstructor
 public class KhachHang {
     @Id
-    @Column(name = "TaiKhoan", nullable = false)
-    private String taiKhoan;
+    @Column(name = "MaHocVien", nullable = false)
+    private String maHocVien;
 
     @Column(name = "MatKhau", nullable = false)
     private String matKhau;
@@ -26,27 +27,28 @@ public class KhachHang {
     private String hoTen;
 
     @Column(name = "Tuoi",nullable = false)
-    private int tuoi;
+    private Integer tuoi;
 
     @Column(name = "GioiTinh",nullable = false)
-    private int gioiTinh;
+    private Integer gioiTinh;
 
     @Column(name = "NgayThamGia",nullable = false)
-    private Date ngayThamGia;
+    private LocalDate ngayThamGia;
 
     @Column(name = "SoDienThoai",nullable = false)
     private String soDienThoai;
 
-    @Column(name = "DiaChi",nullable = false)
+    @Column(name = "DiaChi", nullable = false)
     private String diaChi;
 
     @Column(name = "GhiChu")
     private String ghiChu;
 
     @Column(name = "TrangThai",nullable = false)
-    private int trangThai;
+    private Integer trangThai;
 
     @OneToOne(mappedBy = "khachHang", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private HocVien hocVien;
+
 }

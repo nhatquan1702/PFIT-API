@@ -19,5 +19,5 @@ import javax.persistence.Table;
 public class NgayTap {
     @Id
     @Column(name = "NgayTap",nullable = false)
-    private int ngayTap;
+    private Integer ngayTap;
 }

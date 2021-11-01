@@ -9,6 +9,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class HoaDon {
     private String maHoaDon;
 
     @Column(name = "NgayGioThanhToan",nullable = false)
-    private Date ngayGioThanhToan;
+    private LocalDate ngayGioThanhToan;
 
     @Column(name = "HinhMinhHoa",nullable = false)
     private String hinhMinhHoa;

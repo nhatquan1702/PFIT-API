@@ -34,10 +34,11 @@ public class BaiTap {
     private String moTa;
 
     @Column(name = "CapDo",nullable = false)
-    private int capDo;
+    private Integer capDo;
 
-    @Column(name = "NgayTap",nullable = false)
-    private int ngayTap;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="NgayTap",nullable = false)
+    private NgayTap ngayTap;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="MaKhoaTap",nullable = false)
@@ -55,4 +56,6 @@ public class BaiTap {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @OneToMany(mappedBy = "baiTap")
     List<ChiTietBaiTap> chiTietBaiTapList;
+
+
 }

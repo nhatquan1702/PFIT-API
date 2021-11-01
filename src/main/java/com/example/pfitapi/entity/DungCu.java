@@ -28,7 +28,7 @@ public class DungCu {
     private String hinhMinhHoa;
 
     @Column(name = "KhoiLuong")
-    private float khoiLuong;
+    private Float khoiLuong;
 
     @Column(name = "MoTa")
     private String moTa;

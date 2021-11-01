@@ -34,5 +34,5 @@ public class NhanVien {
     private String ghiChu;
 
     @Column(name = "TrangThai",nullable = false)
-    private int trangThai;
+    private Integer trangThai;
 }

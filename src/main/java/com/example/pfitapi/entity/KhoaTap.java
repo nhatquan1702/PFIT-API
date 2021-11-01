@@ -28,13 +28,13 @@ public class KhoaTap {
     private String hinhQuangCao;
 
     @Column(name = "GiaTheoThang",nullable = false)
-    private int giaTheoThang;
+    private Integer giaTheoThang;
 
     @Column(name = "ChoDoiTuong",nullable = false)
-    private int choDoiTuong;
+    private Integer choDoiTuong;
 
     @Column(name = "TrangThai",nullable = false)
-    private int trangThai;
+    private Integer trangThai;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="MaNhanVien",nullable = false)

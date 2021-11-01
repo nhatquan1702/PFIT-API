@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -22,30 +19,37 @@ public class TheTrang {
     @Column(name = "MaHocVien", nullable = false)
     private String maHocVien;
 
-    @Column(name = "Ngay",nullable = false)
+    @Column(name = "Ngay",nullable = false, unique = true)
     private Date ngay;
 
     @Column(name = "ChieuCao")
-    private float chieuCao;
+    private Float chieuCao;
 
     @Column(name = "CanNang")
-    private float canNang;
+    private Float canNang;
 
     @Column(name = "Vong1")
-    private float vong1;
+    private Float vong1;
 
     @Column(name = "Vong2")
-    private float vong2;
+    private Float vong2;
 
     @Column(name = "Vong3")
-    private float vong3;
+    private Float vong3;
 
     @Column(name = "VongTay")
-    private float vongTay;
+    private Float vongTay;
 
     @Column(name = "VongDui")
-    private float vongDui;
+    private Float vongDui;
 
     @Column(name = "LuongNuoc")
-    private float luongNuoc;
+    private Float luongNuoc;
+
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "MaHocVien", unique = true)
+    private HocVien hocVien;
+
 }

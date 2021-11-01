@@ -9,6 +9,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -23,23 +24,23 @@ public class HocVien {
     private String MaHocVien;
 
     @Column(name = "NgayTao",nullable = false)
-    private Date ngayTao;
+    private LocalDate ngayTao;
 
     @Column(name = "NgayHetHan",nullable = false)
     private Date ngayHetHan;
 
     @Column(name = "CapDo")
-    private int capDo;
+    private Integer capDo;
 
     @Column(name = "TrangThai")
-    private int trangThai;
+    private Integer trangThai;
 
     @Column(name = "GhiChu")
     private String ghiChu;
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "TaiKhoan")
+    @JoinColumn(name = "MaHocVien", unique = true)
     private KhachHang khachHang;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -50,4 +51,8 @@ public class HocVien {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @OneToMany(mappedBy = "hocVien")
     List<ChiTietBaiTap> chiTietBaiTapList;
+
+    @OneToOne(mappedBy = "hocVien", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private TheTrang theTrang;
 }
