@@ -24,6 +24,6 @@ public class NhomCo {
     @Column(name = "TenNhomCo",nullable = false)
     private String tenNhomCo;
 
-    @Column(name = "HinhMinhHoa",nullable = false)
+    @Column(name = "HinhMinhHoa")
     private String hinhMinhHoa;
 }

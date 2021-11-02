@@ -39,7 +39,7 @@ public class HoaDon {
     private String ghiChu;
 
     @Column(name = "TrangThai",nullable = false)
-    private String trangThai;
+    private Integer trangThai;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="MaHocVien",nullable = false)

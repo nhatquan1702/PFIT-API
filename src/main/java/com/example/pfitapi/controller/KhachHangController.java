@@ -1,0 +1,26 @@
+package com.example.pfitapi.controller;
+
+import com.example.pfitapi.service.KhachHangService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/khachhang")
+public class KhachHangController {
+    @Autowired
+    private KhachHangService khachHangService;
+
+    @PostMapping("/dangnhap")
+    public ResponseEntity<?> authenticateUser(
+            @RequestParam(value = "email") String email,
+            @RequestParam(value = "password")String password){
+        int check = khachHangService.dangNhap(email, password);
+        return new ResponseEntity<>(check, HttpStatus.OK);
+    }
+}

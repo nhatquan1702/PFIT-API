@@ -24,7 +24,7 @@ public class KhoaTap {
     @Column(name = "TenKhoaTap",nullable = false)
     private String tenKhoaTap;
 
-    @Column(name = "HinhQuangCao",nullable = false)
+    @Column(name = "HinhQuangCao")
     private String hinhQuangCao;
 
     @Column(name = "GiaTheoThang",nullable = false)

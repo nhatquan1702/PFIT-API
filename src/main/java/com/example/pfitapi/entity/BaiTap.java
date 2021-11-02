@@ -24,10 +24,10 @@ public class BaiTap {
     @Column(name = "TenBaiTap",nullable = false)
     private String tenBaiTap;
 
-    @Column(name = "HinhMinhHoa",nullable = false)
+    @Column(name = "HinhMinhHoa")
     private String hinhMinhHoa;
 
-    @Column(name = "Video",nullable = false)
+    @Column(name = "Video")
     private String video;
 
     @Column(name = "MoTa")
@@ -36,19 +36,19 @@ public class BaiTap {
     @Column(name = "CapDo",nullable = false)
     private Integer capDo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="NgayTap",nullable = false)
     private NgayTap ngayTap;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="MaKhoaTap",nullable = false)
     private KhoaTap khoaTap;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="MaNhomCo",nullable = false)
     private NhomCo nhomCo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="MaDungCu",nullable = false)
     private DungCu dungCu;
 

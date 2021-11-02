@@ -24,7 +24,7 @@ public class DungCu {
     @Column(name = "TenDungCu",nullable = false)
     private String tenDungCu;
 
-    @Column(name = "HinhMinhHoa",nullable = false)
+    @Column(name = "HinhMinhHoa")
     private String hinhMinhHoa;
 
     @Column(name = "KhoiLuong")
