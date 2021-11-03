@@ -1,5 +1,6 @@
 package com.example.pfitapi.controller;
 
+import com.example.pfitapi.entity.Status;
 import com.example.pfitapi.service.KhachHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +18,11 @@ public class KhachHangController {
     private KhachHangService khachHangService;
 
     @PostMapping("/dangnhap")
-    public ResponseEntity<?> authenticateUser(
+    public ResponseEntity<Status> authenticateUser(
             @RequestParam(value = "email") String email,
-            @RequestParam(value = "password")String password){
+            @RequestParam(value = "password") String password){
         int check = khachHangService.dangNhap(email, password);
-        return new ResponseEntity<>(check, HttpStatus.OK);
+        Status status = new Status(check);
+        return new ResponseEntity<>(status, HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.pfitapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,6 +48,7 @@ public class KhachHang {
     @Column(name = "TrangThai",nullable = false)
     private Integer trangThai;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "khachHang", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private HocVien hocVien;
