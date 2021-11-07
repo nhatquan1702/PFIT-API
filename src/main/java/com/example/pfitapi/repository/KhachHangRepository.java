@@ -1,5 +1,6 @@
 package com.example.pfitapi.repository;
 
+import com.example.pfitapi.dto.KhachHangDTO;
 import com.example.pfitapi.entity.KhachHang;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

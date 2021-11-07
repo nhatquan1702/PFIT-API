@@ -18,4 +18,9 @@ public class BaiTapService {
         List<BaiTap> baiTapList = baiTapRepository.findAll();
         return baiTapList;
     }
+
+    public List<BaiTap> getBaiTapByMaNhomCo(String maNhomCo){
+        List<BaiTap> baiTapList = baiTapRepository.findAllByNhomCoMaNhomCo(maNhomCo);
+        return baiTapList;
+    }
 }

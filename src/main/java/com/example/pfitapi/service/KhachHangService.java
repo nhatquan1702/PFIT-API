@@ -1,5 +1,6 @@
 package com.example.pfitapi.service;
 
+import com.example.pfitapi.dto.KhachHangDTO;
 import com.example.pfitapi.entity.KhachHang;
 import com.example.pfitapi.repository.KhachHangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,9 @@ public class KhachHangService {
             return -1; //k dn dc
         }
     }
+
+    public KhachHang getKhachHang(String taiKhoan){
+        return khachHangRepository.findByMaHocVien(taiKhoan);
+    }
+
 }
