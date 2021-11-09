@@ -1,7 +1,9 @@
-package com.example.pfitapi.service;
+package com.example.pfitapi.service.implement;
 
+import com.example.pfitapi.dto.BaiTapDTO;
 import com.example.pfitapi.entity.BaiTap;
 import com.example.pfitapi.repository.BaiTapRepository;
+import com.example.pfitapi.service.in.BaiTapInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +13,15 @@ import java.util.List;
 
 @Service
 @Transactional
-public class BaiTapService {
+public class BaiTapServiceImpl implements BaiTapInterface {
     @Autowired
     private BaiTapRepository baiTapRepository;
 
-    public List<BaiTap> getBaiTapList() {
-        List<BaiTap> baiTapList = baiTapRepository.findAll();
-        return baiTapList;
-    }
-
-    public List<BaiTap> getBaiTapByMaNhomCo(String maNhomCo){
+    @Override
+    public List<BaiTapDTO> getBaiTapTheoNhomCo(String maNhomCo) {
         List<BaiTap> baiTapList = baiTapRepository.findAllByNhomCoMaNhomCo(maNhomCo);
-        return baiTapList;
+        List<BaiTapDTO> baiTapDTOList = new ArrayList<>();
+        baiTapDTOList = new BaiTapDTO().toListBaiTapDto(baiTapList);
+        return baiTapDTOList;
     }
 }
