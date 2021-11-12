@@ -21,7 +21,7 @@ import java.util.List;
 public class HocVien {
     @Id
     @Column(name = "MaHocVien", nullable = false)
-    private String MaHocVien;
+    private String maHocVien;
 
     @Column(name = "NgayTao",nullable = false)
     private LocalDate ngayTao;

@@ -1,6 +1,7 @@
 package com.example.pfitapi.repository;
 
 import com.example.pfitapi.entity.BaiTap;
+import com.example.pfitapi.entity.NgayTap;
 import com.example.pfitapi.entity.NhomCo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,8 @@ public interface BaiTapRepository extends JpaRepository<BaiTap, String> {
     List<BaiTap> findAllById(Iterable<String> strings);
 
     List<BaiTap> findAllByNhomCoMaNhomCo(String maNhomCo);
+
+    BaiTap findByMaBaiTap(String maBaiTap);
+
+    List<BaiTap> findAllByKhoaTapMaKhoaTapAndNgayTapNgayTap(String maKhoaTap, Integer ngayTap);
 }

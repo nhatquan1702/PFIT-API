@@ -21,28 +21,16 @@ public class BaiTapDTO {
 
     private String hinhMinhHoa;
 
-    private String video;
-
-    private String moTa;
-
-    private Integer capDo;
-
-    public BaiTapDTO(String maBaiTap, String tenBaiTap, String hinhMinhHoa, String video, String moTa, Integer capDo) {
+    public BaiTapDTO(String maBaiTap, String tenBaiTap, String hinhMinhHoa) {
         this.maBaiTap = maBaiTap;
         this.tenBaiTap = tenBaiTap;
         this.hinhMinhHoa = hinhMinhHoa;
-        this.video = video;
-        this.moTa = moTa;
-        this.capDo = capDo;
     }
 
     public BaiTapDTO convertToDto(BaiTap baiTap) {
         BaiTapDTO baiTapDTO = new BaiTapDTO();
         baiTapDTO.setMaBaiTap(baiTap.getMaBaiTap());
         baiTapDTO.setTenBaiTap(baiTap.getTenBaiTap());
-        baiTapDTO.setCapDo(baiTap.getCapDo());
-        baiTapDTO.setVideo(baiTap.getVideo());
-        baiTapDTO.setMoTa(baiTap.getMoTa());
         baiTapDTO.setHinhMinhHoa(baiTap.getHinhMinhHoa());
         return baiTapDTO;
     }

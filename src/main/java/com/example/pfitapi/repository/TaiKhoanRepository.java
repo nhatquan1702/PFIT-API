@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class TaiKhoanRepository {
-    @Autowired
-    private SessionFactory sessionFactory;
-
-    public Boolean checkTaiKhoan(String email){
-        Session session = sessionFactory.getCurrentSession();
-        return (Long) session.createQuery("select count(*) from KhachHang as a where a.maHocVien = '"+email+"'").uniqueResult() > 0;
-    }
+//    @Autowired
+//    private SessionFactory sessionFactory;
+//
+//    public Boolean checkTaiKhoan(String email){
+//        Session session = sessionFactory.getCurrentSession();
+//        return (Long) session.createQuery("select count(*) from KhachHang as a where a.maHocVien = '"+email+"'").uniqueResult() > 0;
+//    }
 }
