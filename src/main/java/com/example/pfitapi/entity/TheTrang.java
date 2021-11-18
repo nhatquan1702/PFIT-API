@@ -16,10 +16,7 @@ import java.sql.Date;
 @NoArgsConstructor
 public class TheTrang {
     @Id
-    @Column(name = "MaHocVien", nullable = false)
-    private String maHocVien;
-
-    @Column(name = "Ngay",nullable = false, unique = true)
+    @Column(name = "Ngay",nullable = false)
     private Date ngay;
 
     @Column(name = "ChieuCao")
@@ -47,9 +44,8 @@ public class TheTrang {
     private Float luongNuoc;
 
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "MaHocVien", unique = true)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="MaHocVien",nullable = false)
     private HocVien hocVien;
 
 }

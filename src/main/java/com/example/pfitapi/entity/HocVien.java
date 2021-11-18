@@ -52,7 +52,4 @@ public class HocVien {
     @OneToMany(mappedBy = "hocVien")
     List<ChiTietBaiTap> chiTietBaiTapList;
 
-    @OneToOne(mappedBy = "hocVien", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private TheTrang theTrang;
 }

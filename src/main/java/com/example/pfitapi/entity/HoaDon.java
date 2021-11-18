@@ -26,9 +26,6 @@ public class HoaDon {
     @Column(name = "NgayGioThanhToan",nullable = false)
     private LocalDate ngayGioThanhToan;
 
-    @Column(name = "HinhMinhHoa",nullable = false)
-    private String hinhMinhHoa;
-
     @Column(name = "TongThanhToan",nullable = false)
     private Float tongThanhToan;
 

@@ -47,7 +47,7 @@ public class TheTrangDTO {
 
     public TheTrangDTO convertToDto(TheTrang theTrang) {
         TheTrangDTO theTrangDTO = new TheTrangDTO();
-        theTrangDTO.setMaHocVien(theTrang.getMaHocVien());
+        theTrangDTO.setMaHocVien(theTrang.getHocVien().getMaHocVien());
         theTrangDTO.setCanNang(theTrang.getCanNang());
         theTrangDTO.setChieuCao(theTrang.getChieuCao());
         theTrangDTO.setVong1(theTrang.getVong1());
@@ -59,7 +59,7 @@ public class TheTrangDTO {
         return theTrangDTO;
     }
 
-    public List<TheTrangDTO> toListKhachHangDto(List<TheTrang> listEntity) {
+    public List<TheTrangDTO> toListTheTrangDto(List<TheTrang> listEntity) {
         List<TheTrangDTO> listDto = new ArrayList<>();
         listEntity.forEach(e->{
             listDto.add(this.convertToDto(e));

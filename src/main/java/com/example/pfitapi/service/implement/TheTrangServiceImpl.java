@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -25,16 +26,16 @@ public class TheTrangServiceImpl implements TheTrangInterface {
     }
 
     @Override
-    public TheTrangDTO getTheTrangTheoThang(String maHV, String thang, String nam) {
-        TheTrang theTrang = theTrangRepository.findByMaHocVienAndThang(maHV, thang, nam);
-        TheTrangDTO theTrangDTO =  new TheTrangDTO().convertToDto(theTrang);
-        return theTrangDTO;
+    public List<TheTrangDTO> getTheTrangTheoThang(String maHV, String thang, String nam) {
+        List<TheTrang> theTrangList = theTrangRepository.findByMaHocVienAndThang(maHV, thang, nam);
+        List<TheTrangDTO> theTrangDTOList =  new TheTrangDTO().toListTheTrangDto(theTrangList);
+        return theTrangDTOList;
     }
 
     @Override
-    public TheTrangDTO getTheTrangTheoNam(String maHV, String nam) {
-        TheTrang theTrang = theTrangRepository.findByMaHocVienAndNam(maHV, nam);
-        TheTrangDTO theTrangDTO =  new TheTrangDTO().convertToDto(theTrang);
-        return theTrangDTO;
+    public List<TheTrangDTO> getTheTrangTheoNam(String maHV, String nam) {
+        List<TheTrang> theTrangList = theTrangRepository.findByMaHocVienAndNam(maHV, nam);
+        List<TheTrangDTO> theTrangDTOList =  new TheTrangDTO().toListTheTrangDto(theTrangList);
+        return theTrangDTOList;
     }
 }
