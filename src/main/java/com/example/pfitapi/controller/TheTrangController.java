@@ -32,8 +32,14 @@ public class TheTrangController {
     public ResponseEntity<List<TheTrangDTO>> getTheTrangTheoThang(@RequestParam(value = "mahocvien") String maHV, @RequestParam (value = "thang") String thang, @RequestParam (value = "nam") String nam){
         return new ResponseEntity<>(theTrangService.getTheTrangTheoThang(maHV, thang, nam), HttpStatus.OK) ;
     }
+
     @GetMapping(value = "/thetranghocvientheonam")
     public ResponseEntity<List<TheTrangDTO>> getTheTrangTheoNam(@RequestParam(value = "mahocvien") String maHV, @RequestParam (value = "nam") String nam){
         return new ResponseEntity<>(theTrangService.getTheTrangTheoNam(maHV, nam), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/thetranggannhat")
+    public ResponseEntity<TheTrangDTO> getTheTrangGanNhat(@RequestParam(value = "mahocvien") String maHV){
+        return new ResponseEntity<>(theTrangService.getTheTrangGanNhat(maHV), HttpStatus.OK);
     }
 }

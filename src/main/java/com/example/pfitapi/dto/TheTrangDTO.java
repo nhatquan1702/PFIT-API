@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,13 @@ public class TheTrangDTO {
 
     private Float luongNuoc;
 
-    public TheTrangDTO(String maHocVien, Float chieuCao, Float canNang, Float vong1, Float vong2, Float vong3, Float vongTay, Float vongDui, Float luongNuoc) {
+    private Date ngay;
+
+    public Date getNgay() {
+        return ngay;
+    }
+
+    public TheTrangDTO(Date ngay, String maHocVien, Float chieuCao, Float canNang, Float vong1, Float vong2, Float vong3, Float vongTay, Float vongDui, Float luongNuoc) {
         this.maHocVien = maHocVien;
         this.chieuCao = chieuCao;
         this.canNang = canNang;
@@ -43,6 +50,7 @@ public class TheTrangDTO {
         this.vongTay = vongTay;
         this.vongDui = vongDui;
         this.luongNuoc = luongNuoc;
+        this.ngay = ngay;
     }
 
     public TheTrangDTO convertToDto(TheTrang theTrang) {
@@ -56,6 +64,7 @@ public class TheTrangDTO {
         theTrangDTO.setVongTay(theTrang.getVongTay());
         theTrangDTO.setVongDui(theTrang.getVongDui());
         theTrangDTO.setLuongNuoc(theTrang.getLuongNuoc());
+        theTrangDTO.setNgay(theTrang.getNgay());
         return theTrangDTO;
     }
 

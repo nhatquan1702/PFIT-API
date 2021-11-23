@@ -11,4 +11,6 @@ public interface TheTrangInterface {
     List<TheTrangDTO> getTheTrangTheoThang (String maHV, String thang, String nam);
 
     List<TheTrangDTO> getTheTrangTheoNam (String maHV, String nam);
+
+    TheTrangDTO getTheTrangGanNhat(String maHocVien);
 }

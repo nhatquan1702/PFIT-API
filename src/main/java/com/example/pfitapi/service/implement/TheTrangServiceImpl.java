@@ -38,4 +38,11 @@ public class TheTrangServiceImpl implements TheTrangInterface {
         List<TheTrangDTO> theTrangDTOList =  new TheTrangDTO().toListTheTrangDto(theTrangList);
         return theTrangDTOList;
     }
+
+    @Override
+    public TheTrangDTO getTheTrangGanNhat(String maHocVien) {
+        TheTrang theTrang = theTrangRepository.findByMaHocVien(maHocVien);
+        TheTrangDTO theTrangDTO =  new TheTrangDTO().convertToDto(theTrang);
+        return theTrangDTO;
+    }
 }
