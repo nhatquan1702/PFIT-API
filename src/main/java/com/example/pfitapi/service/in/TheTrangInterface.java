@@ -1,6 +1,7 @@
 package com.example.pfitapi.service.in;
 
 import com.example.pfitapi.dto.TheTrangDTO;
+import com.example.pfitapi.entity.TheTrang;
 
 import java.sql.Date;
 import java.util.List;
@@ -13,4 +14,8 @@ public interface TheTrangInterface {
     List<TheTrangDTO> getTheTrangTheoNam (String maHV, String nam);
 
     TheTrangDTO getTheTrangGanNhat(String maHocVien);
+
+    Integer insertTheTrang (TheTrang theTrang);
+
+    Integer insertTT (TheTrangDTO theTrangDTO);
 }

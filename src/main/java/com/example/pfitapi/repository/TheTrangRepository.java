@@ -22,4 +22,5 @@ public interface TheTrangRepository extends JpaRepository<TheTrang, Date> {
 
     @Query(value = "{CALL SP_TheTrangGanNhat(:mahocvien)}", nativeQuery = true)
     TheTrang findByMaHocVien(@Param("mahocvien") String maHV);
+
 }

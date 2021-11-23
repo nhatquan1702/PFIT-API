@@ -1,11 +1,15 @@
 package com.example.pfitapi.dto;
 
+import com.example.pfitapi.entity.HocVien;
 import com.example.pfitapi.entity.KhachHang;
 import com.example.pfitapi.entity.TheTrang;
+import com.example.pfitapi.repository.HocVienRepository;
+import com.example.pfitapi.service.implement.HocVienServiceImpl;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -15,6 +19,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class TheTrangDTO {
+
     @NotNull
     private String maHocVien;
 
@@ -74,5 +79,20 @@ public class TheTrangDTO {
             listDto.add(this.convertToDto(e));
         });
         return listDto;
+    }
+
+    public TheTrang convertToEntity(TheTrangDTO theTrangDTO){
+        TheTrang theTrang = new TheTrang();
+        theTrang.setCanNang(theTrangDTO.getCanNang());
+        theTrang.setChieuCao(theTrangDTO.getChieuCao());
+        theTrang.setNgay(theTrangDTO.getNgay());
+        theTrang.setLuongNuoc(theTrangDTO.getLuongNuoc());
+        theTrang.setVong1(theTrangDTO.getVong1());
+        theTrang.setVong2(theTrangDTO.getVong2());
+        theTrang.setVong3(theTrangDTO.getVong3());
+        theTrang.setVongTay(theTrangDTO.getVongTay());
+        theTrang.setVongDui(theTrangDTO.getVongDui());
+        return theTrang;
+
     }
 }

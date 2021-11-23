@@ -21,4 +21,5 @@ public class HocVienServiceImpl implements HocVienInterface {
         HocVienKTDTO hocVienKTDTO = new HocVienKTDTO().convertToDto(hocVien);
         return hocVienKTDTO;
     }
+
 }
