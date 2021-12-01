@@ -18,4 +18,29 @@ public class ChiTietBaiTapKey implements Serializable {
 
     @Column(name = "MaHocVien", nullable = false)
     private String maHocVien;
+
+    public ChiTietBaiTapKey() {
+
+    }
+
+    public String getMaBaiTap() {
+        return maBaiTap;
+    }
+
+    public void setMaBaiTap(String maBaiTap) {
+        this.maBaiTap = maBaiTap;
+    }
+
+    public String getMaHocVien() {
+        return maHocVien;
+    }
+
+    public void setMaHocVien(String maHocVien) {
+        this.maHocVien = maHocVien;
+    }
+
+    public ChiTietBaiTapKey(String maBaiTap, String maHocVien) {
+        this.maBaiTap = maBaiTap;
+        this.maHocVien = maHocVien;
+    }
 }

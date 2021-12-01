@@ -3,6 +3,7 @@ package com.example.pfitapi.service.implement;
 import com.example.pfitapi.dto.TheTrangDTO;
 import com.example.pfitapi.entity.HocVien;
 import com.example.pfitapi.entity.TheTrang;
+import com.example.pfitapi.entity.TheTrangKey;
 import com.example.pfitapi.repository.HocVienRepository;
 import com.example.pfitapi.repository.TheTrangRepository;
 import com.example.pfitapi.service.in.TheTrangInterface;
@@ -46,41 +47,41 @@ public class TheTrangServiceImpl implements TheTrangInterface {
 
     @Override
     public TheTrangDTO getTheTrangGanNhat(String maHocVien) {
-        TheTrang theTrang = theTrangRepository.findByMaHocVien(maHocVien);
+        TheTrang theTrang = theTrangRepository.thTrangGanNhat(maHocVien);
         TheTrangDTO theTrangDTO =  new TheTrangDTO().convertToDto(theTrang);
         return theTrangDTO;
     }
 
-    @Override
-    public Integer insertTheTrang(TheTrang theTrang) {
-        boolean check = false;
-        if(theTrangRepository.existsById(theTrang.getNgay())){
-            return 2; //đã tồn tại thể trạng hôm nay
-        }
-        if(!theTrangRepository.existsById(theTrang.getNgay())){
-            theTrangRepository.save(theTrang);
-            check = true;
-        }
-        if(check == true){
-            return 1; //insert thành công
-        }
-        else {
-            return 0; //insert k thành công
-        }
-    }
+//    @Override
+//    public Integer insertTheTrang(TheTrang theTrang) {
+//        boolean check = false;
+//        if(theTrangRepository.existsById(theTrang.getTheTrangKey())){
+//            return 2; //đã tồn tại thể trạng hôm nay
+//        }
+//        if(!theTrangRepository.existsById(theTrang.getTheTrangKey())){
+//            theTrangRepository.save(theTrang);
+//            check = true;
+//        }
+//        if(check == true){
+//            return 1; //insert thành công
+//        }
+//        else {
+//            return 0; //insert k thành công
+//        }
+//    }
 
     @Override
     public Integer insertTT(TheTrangDTO theTrangDTO) {
         boolean check = false;
-
-        if(theTrangRepository.existsById(theTrangDTO.getNgay())){
+        HocVien hocVien = hocVienRepository.findByMaHocVien(theTrangDTO.getMaHocVien());
+        TheTrangKey theTrangKey = new TheTrangKey(theTrangDTO.getNgay(), hocVien);
+        if(theTrangRepository.existsById(theTrangKey)){
             return 2; //đã tồn tại thể trạng hôm nay
         }
-        if(!theTrangRepository.existsById(theTrangDTO.getNgay())){
+        if(!theTrangRepository.existsById(theTrangKey)){
             try {
-                TheTrang theTrang = new TheTrangDTO().convertToEntity(theTrangDTO);
-                HocVien hocVien = hocVienRepository.findByMaHocVien(theTrangDTO.getMaHocVien());
-                theTrang.setHocVien(hocVien);
+                TheTrang theTrang = new TheTrangDTO().convertToEntity(theTrangDTO, hocVien);
+                theTrang.setTheTrangKey(theTrangKey);
                 theTrangRepository.save(theTrang);
                 check = true;
             }
@@ -93,6 +94,74 @@ public class TheTrangServiceImpl implements TheTrangInterface {
         }
         else {
             return 0; //insert k thành công
+        }
+    }
+
+    @Override
+    public Integer updateLuongNuoc(Date ngay, String maHocVien, Float luongNuoc) {
+        HocVien hocVien = hocVienRepository.findByMaHocVien(maHocVien);
+        TheTrangKey theTrangKey = new TheTrangKey(ngay, hocVien);
+        boolean check = false;
+        if(theTrangRepository.existsById(theTrangKey)){
+            try {
+                TheTrang tmpTT = theTrangRepository.findByTheTrangKeyNgay(ngay);
+                TheTrang theTrang = new TheTrang();
+                theTrang = theTrangRepository.save(tmpTT);
+                Float luongNuocTmp = tmpTT.getLuongNuoc();
+                Float tmp = luongNuocTmp + luongNuoc;
+                if(tmp > 3500){
+                    return 2; //lượng nước đã vượt tối đa
+                }
+                if(tmp < 0){
+                    return 3; //lượng nước không hợp lệ
+                }
+                if(tmp > 0 && (tmp < 3500 || tmp == 3500)){
+                    theTrang.setLuongNuoc(tmp);
+                }
+                theTrangRepository.save(theTrang);
+                check = true;
+            }
+            catch (Exception e){
+                check = false;
+            }
+        }
+        else {
+            return 4; // không tìm thấy thể trạng ngày này
+        }
+        if(check == true){
+            return 1; //update thành công
+        }
+        else {
+            return 0; //update không thành công
+        }
+    }
+
+    @Override
+    public Integer updateTheTrang(TheTrangDTO theTrangDTO) {
+        boolean check = false;
+        HocVien hocVien = hocVienRepository.findByMaHocVien(theTrangDTO.getMaHocVien());
+        TheTrangKey theTrangKey = new TheTrangKey(theTrangDTO.getNgay(), hocVien);
+        if(theTrangRepository.existsById(theTrangKey)){
+            try {
+                TheTrang tmpTT = theTrangRepository.findByTheTrangKeyNgay(theTrangDTO.getNgay());
+                TheTrang theTrang = new TheTrang();
+                theTrang = new TheTrangDTO().convertToEntity(theTrangDTO, hocVien);
+                theTrang.setLuongNuoc(tmpTT.getLuongNuoc());
+                theTrangRepository.save(theTrang);
+                check = true;
+            }
+            catch (Exception e){
+                check = false;
+            }
+        }
+        else {
+            return 2; // không tìm thấy thể trạng ngày này
+        }
+        if(check == true){
+            return 1; //update thành công
+        }
+        else {
+            return 0; //update không thành công
         }
     }
 

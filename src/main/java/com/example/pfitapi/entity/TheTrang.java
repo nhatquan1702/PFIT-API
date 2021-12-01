@@ -15,9 +15,8 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TheTrang {
-    @Id
-    @Column(name = "Ngay",nullable = false)
-    private Date ngay;
+    @EmbeddedId
+    private TheTrangKey theTrangKey;
 
     @Column(name = "ChieuCao")
     private Float chieuCao;
@@ -43,9 +42,11 @@ public class TheTrang {
     @Column(name = "LuongNuoc")
     private Float luongNuoc;
 
+    public TheTrangKey getTheTrangKey() {
+        return theTrangKey;
+    }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name ="MaHocVien",nullable = false)
-    private HocVien hocVien;
-
+    public void setTheTrangKey(TheTrangKey theTrangKey) {
+        this.theTrangKey = theTrangKey;
+    }
 }

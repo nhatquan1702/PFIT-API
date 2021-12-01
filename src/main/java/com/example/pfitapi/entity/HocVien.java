@@ -52,4 +52,8 @@ public class HocVien {
     @OneToMany(mappedBy = "hocVien")
     List<ChiTietBaiTap> chiTietBaiTapList;
 
+//    @JsonIgnore
+//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+//    @OneToMany(mappedBy = "hocVien", fetch = FetchType.LAZY)
+//    private List<TheTrangKey> theTrangList;
 }

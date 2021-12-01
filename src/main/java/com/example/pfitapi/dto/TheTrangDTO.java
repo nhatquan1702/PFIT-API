@@ -3,6 +3,7 @@ package com.example.pfitapi.dto;
 import com.example.pfitapi.entity.HocVien;
 import com.example.pfitapi.entity.KhachHang;
 import com.example.pfitapi.entity.TheTrang;
+import com.example.pfitapi.entity.TheTrangKey;
 import com.example.pfitapi.repository.HocVienRepository;
 import com.example.pfitapi.service.implement.HocVienServiceImpl;
 import com.sun.istack.NotNull;
@@ -19,9 +20,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class TheTrangDTO {
-
-    @NotNull
     private String maHocVien;
+
+    private Date ngay;
 
     private Float chieuCao;
 
@@ -39,28 +40,75 @@ public class TheTrangDTO {
 
     private Float luongNuoc;
 
-    private Date ngay;
 
-    public Date getNgay() {
-        return ngay;
+    public Float getChieuCao() {
+        return chieuCao;
     }
 
-    public TheTrangDTO(Date ngay, String maHocVien, Float chieuCao, Float canNang, Float vong1, Float vong2, Float vong3, Float vongTay, Float vongDui, Float luongNuoc) {
-        this.maHocVien = maHocVien;
+    public void setChieuCao(Float chieuCao) {
         this.chieuCao = chieuCao;
+    }
+
+    public Float getCanNang() {
+        return canNang;
+    }
+
+    public void setCanNang(Float canNang) {
         this.canNang = canNang;
+    }
+
+    public Float getVong1() {
+        return vong1;
+    }
+
+    public void setVong1(Float vong1) {
         this.vong1 = vong1;
+    }
+
+    public Float getVong2() {
+        return vong2;
+    }
+
+    public void setVong2(Float vong2) {
         this.vong2 = vong2;
+    }
+
+    public Float getVong3() {
+        return vong3;
+    }
+
+    public void setVong3(Float vong3) {
         this.vong3 = vong3;
+    }
+
+    public Float getVongTay() {
+        return vongTay;
+    }
+
+    public void setVongTay(Float vongTay) {
         this.vongTay = vongTay;
+    }
+
+    public Float getVongDui() {
+        return vongDui;
+    }
+
+    public void setVongDui(Float vongDui) {
         this.vongDui = vongDui;
+    }
+
+    public Float getLuongNuoc() {
+        return luongNuoc;
+    }
+
+    public void setLuongNuoc(Float luongNuoc) {
         this.luongNuoc = luongNuoc;
-        this.ngay = ngay;
     }
 
     public TheTrangDTO convertToDto(TheTrang theTrang) {
         TheTrangDTO theTrangDTO = new TheTrangDTO();
-        theTrangDTO.setMaHocVien(theTrang.getHocVien().getMaHocVien());
+        theTrangDTO.setMaHocVien(theTrang.getTheTrangKey().getHocVien().getMaHocVien());
+        theTrangDTO.setNgay(theTrang.getTheTrangKey().getNgay());
         theTrangDTO.setCanNang(theTrang.getCanNang());
         theTrangDTO.setChieuCao(theTrang.getChieuCao());
         theTrangDTO.setVong1(theTrang.getVong1());
@@ -69,7 +117,6 @@ public class TheTrangDTO {
         theTrangDTO.setVongTay(theTrang.getVongTay());
         theTrangDTO.setVongDui(theTrang.getVongDui());
         theTrangDTO.setLuongNuoc(theTrang.getLuongNuoc());
-        theTrangDTO.setNgay(theTrang.getNgay());
         return theTrangDTO;
     }
 
@@ -81,11 +128,12 @@ public class TheTrangDTO {
         return listDto;
     }
 
-    public TheTrang convertToEntity(TheTrangDTO theTrangDTO){
+    public TheTrang convertToEntity(TheTrangDTO theTrangDTO, HocVien hocVien){
         TheTrang theTrang = new TheTrang();
+        TheTrangKey theTrangKey = new TheTrangKey(theTrangDTO.getNgay(), hocVien);
         theTrang.setCanNang(theTrangDTO.getCanNang());
         theTrang.setChieuCao(theTrangDTO.getChieuCao());
-        theTrang.setNgay(theTrangDTO.getNgay());
+        theTrang.setTheTrangKey(theTrangKey);
         theTrang.setLuongNuoc(theTrangDTO.getLuongNuoc());
         theTrang.setVong1(theTrangDTO.getVong1());
         theTrang.setVong2(theTrangDTO.getVong2());
