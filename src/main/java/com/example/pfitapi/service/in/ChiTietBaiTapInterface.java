@@ -15,4 +15,5 @@ public interface ChiTietBaiTapInterface {
     Integer getPTHTBTTrongNgay(String maKhoaTap, String maHocVien , Integer ngay);
 
     Integer getPTHTBTTrongKhoa(String maKhoaTap, String maHocVien);
+
 }

@@ -13,4 +13,6 @@ public interface HuanLuyenVienRepository extends JpaRepository<HuanLuyenVien, St
 
     @Override
     List<HuanLuyenVien> findAllById(Iterable<String> strings);
+
+    HuanLuyenVien findByMaHLV(String maHLV);
 }
