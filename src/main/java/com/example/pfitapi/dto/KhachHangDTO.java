@@ -30,7 +30,7 @@ public class KhachHangDTO {
 
     public KhachHangDTO convertToDto(KhachHang khachHang) {
         KhachHangDTO khachHangDTO = new KhachHangDTO();
-        khachHangDTO.setTaiKhoan(khachHang.getMaHocVien());
+        khachHangDTO.setTaiKhoan(khachHang.getTaiKhoan());
         khachHangDTO.setMatKhau(khachHang.getMatKhau());
         khachHangDTO.setTrangThai(khachHang.getTrangThai());
         return khachHangDTO;

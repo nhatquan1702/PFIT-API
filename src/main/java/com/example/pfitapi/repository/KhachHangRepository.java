@@ -17,7 +17,7 @@ public interface KhachHangRepository extends JpaRepository<KhachHang, String> {
     @Override
     List<KhachHang> findAllById(Iterable<String> strings);
 
-    Boolean existsKhachHangByMaHocVien(String taiKhoan);
+    Boolean existsKhachHangByTaiKhoan(String taiKhoan);
 
-    KhachHang findByMaHocVien(String maHocVien);
+    KhachHang findByTaiKhoan(String maHocVien);
 }

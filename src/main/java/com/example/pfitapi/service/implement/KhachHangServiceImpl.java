@@ -18,7 +18,7 @@ public class KhachHangServiceImpl implements KhachHangInterface {
 
     @Override
     public KhachHangDTO getKHByMaHocVien(String maHocVien) {
-        KhachHang khachHang = khachHangRepository.findByMaHocVien(maHocVien);
+        KhachHang khachHang = khachHangRepository.findByTaiKhoan(maHocVien);
         KhachHangDTO khachHangDTO = new KhachHangDTO();
         khachHangDTO = khachHangDTO.convertToDto(khachHang);
         return khachHangDTO;

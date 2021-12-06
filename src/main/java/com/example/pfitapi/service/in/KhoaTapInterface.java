@@ -15,5 +15,4 @@ public interface KhoaTapInterface {
 
     Integer updateTrangThaiKhoaTap (String maKhoaTap, Integer trangThai);
 
-
 }

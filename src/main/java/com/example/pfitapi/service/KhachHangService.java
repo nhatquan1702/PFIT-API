@@ -15,8 +15,8 @@ public class KhachHangService {
     private KhachHangRepository khachHangRepository;
 
     public Integer dangNhap(String email, String password) {
-        KhachHang khachHang = khachHangRepository.findByMaHocVien(email);
-        if(!khachHangRepository.existsKhachHangByMaHocVien(email)){
+        KhachHang khachHang = khachHangRepository.findByTaiKhoan(email);
+        if(!khachHangRepository.existsKhachHangByTaiKhoan(email)){
             return 0; //tài khoản k tồn tại
         }
         if (!password.equals(khachHang.getMatKhau())) {
@@ -31,7 +31,7 @@ public class KhachHangService {
     }
 
     public KhachHang getKhachHang(String taiKhoan){
-        return khachHangRepository.findByMaHocVien(taiKhoan);
+        return khachHangRepository.findByTaiKhoan(taiKhoan);
     }
 
 }

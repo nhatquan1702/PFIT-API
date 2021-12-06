@@ -18,8 +18,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class KhachHang {
     @Id
-    @Column(name = "MaHocVien", nullable = false)
-    private String maHocVien;
+    @Column(name = "TaiKhoan", nullable = false)
+    private String taiKhoan;
 
     @Column(name = "MatKhau", nullable = false)
     private String matKhau;
@@ -47,10 +47,5 @@ public class KhachHang {
 
     @Column(name = "TrangThai",nullable = false)
     private Integer trangThai;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "khachHang", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private HocVien hocVien;
 
 }

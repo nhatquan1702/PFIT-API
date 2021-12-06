@@ -38,14 +38,13 @@ public class HocVien {
     @Column(name = "GhiChu")
     private String ghiChu;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "MaHocVien", unique = true)
-    private KhachHang khachHang;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="MaKhoaTap",nullable = false)
     private KhoaTap khoaTap;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="TaiKhoan",nullable = false)
+    private KhachHang khachHang;
 
     @JsonIgnore
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
