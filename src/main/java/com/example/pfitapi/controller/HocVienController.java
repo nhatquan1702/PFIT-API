@@ -37,9 +37,36 @@ public class HocVienController {
     }
 
     @PostMapping(value = "/updatetthv", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Status> updateLuongNuoc(@RequestParam (value = "mahocvien") String maHocVien, @RequestParam (value = "trangthai") Integer trangThai){
+    public ResponseEntity<Status> updateTrangThai(@RequestParam (value = "mahocvien") String maHocVien, @RequestParam (value = "trangthai") Integer trangThai){
         int check = hocVienServiceImpl.updateTrangThaiHocVien(maHocVien, trangThai);
         Status status = new Status(check);
         return new ResponseEntity<>(status, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/updatekthv", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Status> updateKhoaTap(@RequestParam (value = "mahocvien") String maHocVien, @RequestParam (value = "makhoatap") String maKhoatap){
+        int check = hocVienServiceImpl.updateKhoaTapChoHocVien(maHocVien, maKhoatap);
+        Status status = new Status(check);
+        return new ResponseEntity<>(status, HttpStatus.OK);
+    }
+
+    @PostMapping("/dangnhap")
+    public ResponseEntity<Status> authenticateUser(
+            @RequestParam(value = "email") String email,
+            @RequestParam(value = "password") String password){
+        int check = hocVienServiceImpl.dangNhap(email, password);
+        Status status = new Status(check);
+        return new ResponseEntity<>(status, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/tthocvien")
+    public ResponseEntity<HocVienDTO>  getKhachHangDTOO(@RequestParam(value = "taikhoan") String taiKhoan){
+        return new ResponseEntity<>(hocVienServiceImpl.getTTHocVien(taiKhoan), HttpStatus.OK) ;
+    }
+
+    @GetMapping(value = "/tthocvienheader", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public HocVienDTO getKH(@RequestHeader(value = "taikhoan") String taiKhoan){
+        return hocVienServiceImpl.getTTHocVien(taiKhoan);
     }
 }

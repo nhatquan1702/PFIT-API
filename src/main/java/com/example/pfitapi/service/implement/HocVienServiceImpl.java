@@ -2,10 +2,8 @@ package com.example.pfitapi.service.implement;
 
 import com.example.pfitapi.dto.HocVienDTO;
 import com.example.pfitapi.dto.HocVienKTDTO;
-import com.example.pfitapi.dto.KhoaTapDTO;
 import com.example.pfitapi.entity.*;
 import com.example.pfitapi.repository.HocVienRepository;
-import com.example.pfitapi.repository.KhachHangRepository;
 import com.example.pfitapi.repository.KhoaTapRepository;
 import com.example.pfitapi.service.in.HocVienInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +20,10 @@ public class HocVienServiceImpl implements HocVienInterface {
     @Autowired
     private KhoaTapRepository khoaTapRepository;
 
-    @Autowired
-    private KhachHangRepository khachHangRepository;
-
-
     @Override
     public HocVienKTDTO getMaKhoaTapTheoHocVien(String maHocVien) {
         HocVien hocVien = hocVienRepository.findByMaHocVien(maHocVien);
-        HocVienKTDTO hocVienKTDTO = new HocVienKTDTO().convertToDto(hocVien);
-        return hocVienKTDTO;
+        return new HocVienKTDTO().convertToDto(hocVien);
     }
 
     @Override
@@ -42,16 +35,13 @@ public class HocVienServiceImpl implements HocVienInterface {
     @Override
     public Integer insertHocVien(HocVienDTO hocVienDTO) {
         boolean check = false;
-        System.out.println("looix");
         KhoaTap khoaTap = khoaTapRepository.findByMaKhoaTap(hocVienDTO.getMaKhoaTap());
-        System.out.println("aaaaaa "+khoaTap.toString());
-        KhachHang khachHang = khachHangRepository.findByTaiKhoan(hocVienDTO.getTaiKhoan());
         if(hocVienRepository.existsById(hocVienDTO.getMaHocVien()) && hocVienDTO.getTrangThai()==1){
             return 2; //đã tồn tại học viên này
         }
         else {
             try {
-                HocVien hocVien = new HocVienDTO().convertToEntity(hocVienDTO, khoaTap, khachHang);
+                HocVien hocVien = new HocVienDTO().convertToEntity(hocVienDTO, khoaTap);
                 hocVienRepository.save(hocVien);
                 check = true;
             }
@@ -86,12 +76,66 @@ public class HocVienServiceImpl implements HocVienInterface {
                 check = false;
             }
         }
-        if(check == true){
+        if(check){
             return 1; //update thành công
         }
         else {
             return 0; //update k thành công
         }
+    }
+
+    @Override
+    public Integer updateKhoaTapChoHocVien(String maHocVien, String maKhoaTap) {
+        boolean check = false;
+        KhoaTap khoaTap = khoaTapRepository.findByMaKhoaTap(maKhoaTap);
+        if(khoaTapRepository.existsById(maKhoaTap)){
+            return 3; //k tồn tại khoa tap này
+        }
+        if(!hocVienRepository.existsById(maHocVien)){
+            return 2; //k tồn tại học viên này
+        }
+        if(hocVienRepository.existsById(maHocVien)){
+            try {
+                HocVien hvTam = hocVienRepository.findByMaHocVien(maHocVien);
+                HocVien hocVien = new HocVien();
+                hocVien = hocVienRepository.save(hvTam);
+                hocVien.setKhoaTap(khoaTap);
+                hocVienRepository.save(hocVien);
+                check = true;
+            }
+            catch (Exception e){
+                check = false;
+            }
+        }
+        if(check){
+            return 1; //update thành công
+        }
+        else {
+            return 0; //update k thành công
+        }
+    }
+
+    @Override
+    public Integer dangNhap(String maHocVien, String pass) {
+        HocVien hocVien = hocVienRepository.findByMaHocVien(maHocVien);
+        if(!hocVienRepository.existsById(maHocVien)){
+            return 0; //tài khoản k tồn tại
+        }
+        if (!pass.equals(hocVien.getMatKhau())) {
+            return 0; //sai mk
+        }
+        if (hocVien.getTrangThai() != -1 && hocVien.getMatKhau().equals(pass) ){
+            return 1; // tk khác tt xóa và đúng pass
+        }
+        else {
+            return -1; //k dn dc
+        }
+    }
+
+    @Override
+    public HocVienDTO getTTHocVien(String maHocVien) {
+        HocVien hocVien = hocVienRepository.findByMaHocVien(maHocVien);
+        return new HocVienDTO().convertToDto(hocVien);
     }
 
 }

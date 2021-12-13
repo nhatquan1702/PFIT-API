@@ -13,4 +13,10 @@ public interface HocVienInterface {
     Integer insertHocVien(HocVienDTO hocVienDTO);
 
     Integer updateTrangThaiHocVien (String maHocVien, Integer trangThai);
+
+    Integer updateKhoaTapChoHocVien (String maHocVien, String maKhoaTap);
+
+    Integer dangNhap(String maHocVien, String pass);
+
+    HocVienDTO getTTHocVien(String maHocVien);
 }

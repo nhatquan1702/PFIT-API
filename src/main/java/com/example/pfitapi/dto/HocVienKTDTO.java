@@ -1,14 +1,11 @@
 package com.example.pfitapi.dto;
 
 import com.example.pfitapi.entity.HocVien;
-import com.example.pfitapi.entity.KhachHang;
-import com.example.pfitapi.entity.KhoaTap;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 

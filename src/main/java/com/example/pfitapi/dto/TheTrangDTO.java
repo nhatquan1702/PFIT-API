@@ -1,16 +1,11 @@
 package com.example.pfitapi.dto;
 
 import com.example.pfitapi.entity.HocVien;
-import com.example.pfitapi.entity.KhachHang;
 import com.example.pfitapi.entity.TheTrang;
 import com.example.pfitapi.entity.TheTrangKey;
-import com.example.pfitapi.repository.HocVienRepository;
-import com.example.pfitapi.service.implement.HocVienServiceImpl;
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
 import java.util.ArrayList;

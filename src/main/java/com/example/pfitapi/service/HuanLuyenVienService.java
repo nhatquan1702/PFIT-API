@@ -19,4 +19,9 @@ public class HuanLuyenVienService {
         List<HuanLuyenVien> huanLuyenVienList = huanLuyenVienRepository.findAll();
         return huanLuyenVienList;
     }
+
+    public HuanLuyenVien getHLV (String maHLV){
+        HuanLuyenVien huanLuyenVien = huanLuyenVienRepository.findByMaHLV(maHLV);
+        return huanLuyenVien;
+    }
 }

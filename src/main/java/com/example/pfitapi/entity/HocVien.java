@@ -23,11 +23,26 @@ public class HocVien {
     @Column(name = "MaHocVien", nullable = false)
     private String maHocVien;
 
-    @Column(name = "NgayTao",nullable = false)
-    private LocalDate ngayTao;
+    @Column(name = "MatKhau", nullable = false)
+    private String matKhau;
 
-    @Column(name = "NgayHetHan",nullable = false)
-    private Date ngayHetHan;
+    @Column(name = "HoTen",nullable = false)
+    private String hoTen;
+
+    @Column(name = "Tuoi",nullable = false)
+    private Integer tuoi;
+
+    @Column(name = "GioiTinh",nullable = false)
+    private Integer gioiTinh;
+
+    @Column(name = "NgayThamGia",nullable = false)
+    private Date ngayThamGia;
+
+    @Column(name = "SoDienThoai",nullable = false)
+    private String soDienThoai;
+
+    @Column(name = "DiaChi", nullable = false)
+    private String diaChi;
 
     @Column(name = "CapDo")
     private Integer capDo;
@@ -41,10 +56,6 @@ public class HocVien {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="MaKhoaTap",nullable = false)
     private KhoaTap khoaTap;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name ="TaiKhoan",nullable = false)
-    private KhachHang khachHang;
 
     @JsonIgnore
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)

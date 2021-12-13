@@ -12,4 +12,5 @@ public interface HocVienRepository extends JpaRepository<HocVien, String> {
     HocVien findByMaHocVien(String maHocVien);
 
     HocVien findByMaHocVienAndTrangThai(String maHocVien, Integer trangThai);
+
 }
