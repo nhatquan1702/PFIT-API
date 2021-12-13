@@ -24,7 +24,7 @@ public class HoaDon {
     private String maHoaDon;
 
     @Column(name = "NgayGioThanhToan",nullable = false)
-    private LocalDate ngayGioThanhToan;
+    private Date ngayGioThanhToan;
 
     @Column(name = "TongThanhToan",nullable = false)
     private Float tongThanhToan;

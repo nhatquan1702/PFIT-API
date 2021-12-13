@@ -1,12 +1,15 @@
 package com.example.pfitapi.repository;
 
 import com.example.pfitapi.dto.DoanhThuDTO;
+import com.example.pfitapi.dto.HoaDonDTO;
 import com.example.pfitapi.entity.HoaDon;
 import org.hibernate.mapping.Any;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.xml.crypto.Data;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,4 +22,7 @@ public interface HoaDonRepository extends JpaRepository<HoaDon, String> {
 
     @Query(value = "{CALL SP_DT_Nam(:nam)}", nativeQuery = true)
     List<Object[]> doanhThuTheoNam(@Param("nam") String nam);
+
+    @Query(value = "FROM HoaDon as hd WHERE hd.ngayGioThanhToan = :ngay")
+    List<HoaDon> getListHoaDonTrongNgay(@Param("ngay") Date ngay);
 }

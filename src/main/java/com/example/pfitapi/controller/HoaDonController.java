@@ -1,6 +1,7 @@
 package com.example.pfitapi.controller;
 
 import com.example.pfitapi.dto.DoanhThuDTO;
+import com.example.pfitapi.dto.HoaDonDTO;
 import com.example.pfitapi.dto.TheTrangDTO;
 import com.example.pfitapi.service.implement.HoaDonServiceImpl;
 import org.aspectj.weaver.patterns.DeclareTypeErrorOrWarning;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,5 +48,10 @@ public class HoaDonController {
         //
         // DoanhThuDTO doanhThuDTO = new DoanhThuDTO().ConvertToDTO(tmp);
         return new ResponseEntity<>(doanhThuDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/dshoadontrongngay")
+    public ResponseEntity<Object> getDsHDTheoNgay(@RequestParam(value = "ngay") Date ngay){
+        return new ResponseEntity<>(hoaDonService.getListHoaDonTrongTheoNgay(ngay), HttpStatus.OK);
     }
 }
