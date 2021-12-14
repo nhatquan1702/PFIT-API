@@ -88,9 +88,6 @@ public class HocVienServiceImpl implements HocVienInterface {
     public Integer updateKhoaTapChoHocVien(String maHocVien, String maKhoaTap) {
         boolean check = false;
         KhoaTap khoaTap = khoaTapRepository.findByMaKhoaTap(maKhoaTap);
-        if(khoaTapRepository.existsById(maKhoaTap)){
-            return 3; //k tồn tại khoa tap này
-        }
         if(!hocVienRepository.existsById(maHocVien)){
             return 2; //k tồn tại học viên này
         }
