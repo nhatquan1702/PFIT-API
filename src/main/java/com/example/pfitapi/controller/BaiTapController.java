@@ -24,7 +24,7 @@ public class BaiTapController {
     @Autowired
     private BaiTapServiceImpl baiTapServiceImpl;
 
-    @GetMapping("tatca")
+    @GetMapping("")
     public ResponseEntity<List<BaiTap>> getAllBaiTap() {
         List<BaiTap> baiTapList = baiTapService.getBaiTapList();
         return new ResponseEntity<>(baiTapList, HttpStatus.OK);

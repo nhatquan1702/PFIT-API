@@ -43,7 +43,6 @@ public class HoaDonDTO {
         hoaDonDTO.setGhiChu(hoaDon.getGhiChu());
         hoaDonDTO.setTrangThai(hoaDon.getTrangThai());
         hoaDonDTO.setMaHocVien(hoaDon.getHocVien().getMaHocVien());
-        hoaDonDTO.setHoTen(hoaDon.getHocVien().getHoTen());
         hoaDonDTO.setMaKhoaTap(hoaDon.getHocVien().getKhoaTap().getMaKhoaTap());
         hoaDonDTO.setTenKhoaTap(hoaDon.getHocVien().getKhoaTap().getTenKhoaTap());
         return hoaDonDTO;

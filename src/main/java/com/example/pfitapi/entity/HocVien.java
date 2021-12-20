@@ -23,11 +23,10 @@ public class HocVien {
     @Column(name = "MaHocVien", nullable = false)
     private String maHocVien;
 
-    @Column(name = "MatKhau", nullable = false)
-    private String matKhau;
-
-    @Column(name = "HoTen",nullable = false)
-    private String hoTen;
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "MaHocVien", unique = true)
+    private TaiKhoan taiKhoan;
 
     @Column(name = "Tuoi",nullable = false)
     private Integer tuoi;
@@ -38,11 +37,6 @@ public class HocVien {
     @Column(name = "NgayThamGia",nullable = false)
     private Date ngayThamGia;
 
-    @Column(name = "SoDienThoai",nullable = false)
-    private String soDienThoai;
-
-    @Column(name = "DiaChi", nullable = false)
-    private String diaChi;
 
     @Column(name = "CapDo")
     private Integer capDo;
@@ -50,8 +44,6 @@ public class HocVien {
     @Column(name = "TrangThai")
     private Integer trangThai;
 
-    @Column(name = "GhiChu")
-    private String ghiChu;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="MaKhoaTap",nullable = false)

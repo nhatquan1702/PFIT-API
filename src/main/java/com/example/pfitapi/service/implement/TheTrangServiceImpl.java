@@ -47,9 +47,15 @@ public class TheTrangServiceImpl implements TheTrangInterface {
 
     @Override
     public TheTrangDTO getTheTrangGanNhat(String maHocVien) {
-        TheTrang theTrang = theTrangRepository.thTrangGanNhat(maHocVien);
-        TheTrangDTO theTrangDTO =  new TheTrangDTO().convertToDto(theTrang);
-        return theTrangDTO;
+        try {
+            TheTrang theTrang = theTrangRepository.thTrangGanNhat(maHocVien);
+            TheTrangDTO theTrangDTO =  new TheTrangDTO().convertToDto(theTrang);
+            return theTrangDTO;
+        }
+        catch (Exception e){
+            return  null;
+        }
+
     }
 
 //    @Override

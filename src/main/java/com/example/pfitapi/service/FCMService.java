@@ -1,0 +1,28 @@
+package com.example.pfitapi.service;
+
+import com.example.pfitapi.dto.PnsRequest;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingException;
+import com.google.firebase.messaging.Message;
+import com.google.firebase.messaging.Notification;
+import org.springframework.stereotype.Service;
+
+@Service
+public class FCMService {
+    public String pushNotification(PnsRequest pnsRequest) {
+        Message message = Message.builder()
+                .setToken(pnsRequest.getFcmToken())
+                .setNotification(new Notification(pnsRequest.getTitle(), pnsRequest.getContent()))
+                .putData("title", pnsRequest.getTitle())
+                .putData("content", pnsRequest.getContent())
+                .build();
+
+        String response = null;
+        try {
+            response = FirebaseMessaging.getInstance().send(message);
+        } catch (FirebaseMessagingException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+}

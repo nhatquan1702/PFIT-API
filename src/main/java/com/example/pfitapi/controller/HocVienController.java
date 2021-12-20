@@ -50,15 +50,6 @@ public class HocVienController {
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
-    @PostMapping("/dangnhap")
-    public ResponseEntity<Status> authenticateUser(
-            @RequestParam(value = "email") String email,
-            @RequestParam(value = "password") String password){
-        int check = hocVienServiceImpl.dangNhap(email, password);
-        Status status = new Status(check);
-        return new ResponseEntity<>(status, HttpStatus.OK);
-    }
-
     @GetMapping(value = "/tthocvien")
     public ResponseEntity<HocVienDTO>  getKhachHangDTOO(@RequestParam(value = "taikhoan") String taiKhoan){
         return new ResponseEntity<>(hocVienServiceImpl.getTTHocVien(taiKhoan), HttpStatus.OK) ;

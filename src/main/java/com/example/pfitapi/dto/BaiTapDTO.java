@@ -16,15 +16,17 @@ public class BaiTapDTO {
     @NotNull
     private String maBaiTap;
 
-    @NotNull
     private String tenBaiTap;
 
     private String hinhMinhHoa;
 
-    public BaiTapDTO(String maBaiTap, String tenBaiTap, String hinhMinhHoa) {
+    private Integer trangThai;
+
+    public BaiTapDTO(String maBaiTap, String tenBaiTap, String hinhMinhHoa, Integer trangThai) {
         this.maBaiTap = maBaiTap;
         this.tenBaiTap = tenBaiTap;
         this.hinhMinhHoa = hinhMinhHoa;
+        this.trangThai = trangThai;
     }
 
     public BaiTapDTO convertToDto(BaiTap baiTap) {
@@ -32,6 +34,7 @@ public class BaiTapDTO {
         baiTapDTO.setMaBaiTap(baiTap.getMaBaiTap());
         baiTapDTO.setTenBaiTap(baiTap.getTenBaiTap());
         baiTapDTO.setHinhMinhHoa(baiTap.getHinhMinhHoa());
+        baiTapDTO.setTrangThai(baiTap.getCapDo());
         return baiTapDTO;
     }
 

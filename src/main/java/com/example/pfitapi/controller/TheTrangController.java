@@ -48,8 +48,12 @@ public class TheTrangController {
     }
 
     @GetMapping(value = "/thetranggannhat")
-    public ResponseEntity<TheTrangDTO> getTheTrangGanNhat(@RequestParam(value = "mahocvien") String maHV){
-        return new ResponseEntity<>(theTrangService.getTheTrangGanNhat(maHV), HttpStatus.OK);
+    public ResponseEntity<?> getTheTrangGanNhat(@RequestParam(value = "mahocvien") String maHV){
+        TheTrangDTO theTrangDTO = theTrangService.getTheTrangGanNhat(maHV);
+        if(theTrangDTO==null){
+            return ResponseEntity.ok(new Status(400));
+        }
+        return ResponseEntity.ok(theTrangDTO);
     }
 
     @PostMapping(value = "/insert",

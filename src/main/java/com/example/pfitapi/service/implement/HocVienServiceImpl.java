@@ -113,23 +113,6 @@ public class HocVienServiceImpl implements HocVienInterface {
     }
 
     @Override
-    public Integer dangNhap(String maHocVien, String pass) {
-        HocVien hocVien = hocVienRepository.findByMaHocVien(maHocVien);
-        if(!hocVienRepository.existsById(maHocVien)){
-            return 0; //tài khoản k tồn tại
-        }
-        if (!pass.equals(hocVien.getMatKhau())) {
-            return 0; //sai mk
-        }
-        if (hocVien.getTrangThai() != -1 && hocVien.getMatKhau().equals(pass) ){
-            return 1; // tk khác tt xóa và đúng pass
-        }
-        else {
-            return -1; //k dn dc
-        }
-    }
-
-    @Override
     public HocVienDTO getTTHocVien(String maHocVien) {
         HocVien hocVien = hocVienRepository.findByMaHocVien(maHocVien);
         return new HocVienDTO().convertToDto(hocVien);

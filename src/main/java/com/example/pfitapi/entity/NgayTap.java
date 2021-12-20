@@ -20,4 +20,7 @@ public class NgayTap {
     @Id
     @Column(name = "NgayTap",nullable = false)
     private Integer ngayTap;
+
+    @Column(name = "TrangThai", nullable = false)
+    private  Integer trangThai;
 }
